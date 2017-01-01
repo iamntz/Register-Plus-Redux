@@ -10,15 +10,6 @@ Enhances the user registration process with complete customization and additiona
 
 == Description ==
 
-Check official website for live demo http://plugins.readygraph.com/register-plus-redux/
-
-* [Live demo](http://plugins.readygraph.com/register-plus-redux/)
-
-* [More Description](http://plugins.readygraph.com/register-plus-redux/)
-
-* [Suggestion/comments](http://plugins.readygraph.com/register-plus-redux/)
-
-
 Register Plus Redux enables the user registration (or signup) process to be customized in many ways, big and small. Is there another field you want users to complete when registering? Do you want to change the message your users receive after they register? Do you want users to have to verify their email address is legitimate? Do you want to queue up new users to be approved or denied by an administrator? Register Plus Redux can do all that and more.
 
 Enhancements to registration include:
@@ -229,20 +220,6 @@ This is a feature currently under development and is scheduled to be released in
 **Can I export a list of my subscribers?**
 
 This is a feature currently under development and is scheduled to be released in our next update. 
-
-**If I decide to stop using ReadyGraph, do I keep my subscribers?**
-
-Yes, contact us at info@readygraph.com for assistance.
-
-**Can I send automated emails/newsletters to my subscribers?**
-
-On the right side of the “ReadyGraph App” page, you will find a link to a page where you can Enable/Disable/Configure the various automated emails that you can send via ReadyGraph.
-
-**Is ReadyGraph necessary in order to use this plug-in?**
-
-No, it isn’t; you can use this plug-in without ReadyGraph features enabled, but you would be missing out on added growth opportunities.
-
-If you have questions or concerns, contact us anytime at [info@readygraph.com](mailto:info@readygraph.com)
 
 == Screenshots ==
 
