@@ -1,5 +1,5 @@
 === Register Plus Redux ===
-Contributors: Dabelon, tanaylakhani, radiok
+Contributors: Dabelon, tanaylakhani, radiok, iamntz
 Donate link: http://radiok.info/donate/
 Tags: registration, register, plus, redux, password, invitation, subscription, code, email, verification, disclaimer, license, agreement, privacy, policy, logo, moderation, user
 Requires at least: 3.5
