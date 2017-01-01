@@ -57,6 +57,7 @@ if ( !class_exists( 'RPR_Activate' ) ) {
 				update_user_meta( $user_id, 'stored_user_password', sanitize_text_field( $password ) );
 				$user = get_userdata( $user_id );
 				$user->set_role( 'rpr_unverified' );
+				do_action( 'rpr/wpmu_activate_user', $user );
 			}
 
 			if ( is_array( $register_plus_redux->rpr_get_option( 'show_fields' ) ) && in_array( 'first_name', $register_plus_redux->rpr_get_option( 'show_fields' ) ) && !empty( $meta['first_name'] ) ) update_user_meta( $user_id, 'first_name', sanitize_text_field( $meta['first_name'] ) );
