@@ -43,6 +43,7 @@ class csstidy_optimise {
 
 	/**
 	 * Constructor
+	 *
 	 * @param array $css contains the class csstidy
 	 * @access private
 	 * @version 1.0
@@ -59,6 +60,7 @@ class csstidy_optimise {
 
 	/**
 	 * Optimises $css after parsing
+	 *
 	 * @access public
 	 * @version 1.0
 	 */
@@ -105,6 +107,7 @@ class csstidy_optimise {
 
 	/**
 	 * Optimises values
+	 *
 	 * @access public
 	 * @version 1.0
 	 */
@@ -128,6 +131,7 @@ class csstidy_optimise {
 
 	/**
 	 * Optimises shorthands
+	 *
 	 * @access public
 	 * @version 1.0
 	 */
@@ -156,6 +160,7 @@ class csstidy_optimise {
 
 	/**
 	 * Optimises a sub-value
+	 *
 	 * @access public
 	 * @version 1.0
 	 */
@@ -209,6 +214,7 @@ class csstidy_optimise {
 
 	/**
 	 * Compresses shorthand values. Example: margin:1px 1px 1px 1px -> margin:1px
+	 *
 	 * @param string $value
 	 * @access public
 	 * @return string
@@ -254,6 +260,7 @@ class csstidy_optimise {
 
 	/**
 	 * Removes unnecessary whitespace in ! important
+	 *
 	 * @param string $string
 	 * @return string
 	 * @access public
@@ -268,6 +275,7 @@ class csstidy_optimise {
 
 	/**
 	 * Color compression function. Converts all rgb() values to #-values and uses the short-form if possible. Also replaces 4 color names by #-values.
+	 *
 	 * @param string $color
 	 * @return string
 	 * @version 1.1
@@ -336,6 +344,7 @@ class csstidy_optimise {
 
 	/**
 	 * Compresses numbers (ie. 1.0 becomes 1 or 1.100 becomes 1.1 )
+	 *
 	 * @param string $subvalue
 	 * @return string
 	 * @version 1.2
@@ -384,6 +393,7 @@ class csstidy_optimise {
 	/**
 	 * Checks if a given string is a CSS valid number. If it is,
 	 * an array containing the value and unit is returned
+	 *
 	 * @param string $string
 	 * @return array ('unit' if unit is found or '' if no unit exists, number value) or false if no number
 	 */
@@ -427,6 +437,7 @@ class csstidy_optimise {
 	/**
 	 * Merges selectors with same properties. Example: a{color:red} b{color:red} -> a,b{color:red}
 	 * Very basic and has at least one bug. Hopefully there is a replacement soon.
+	 *
 	 * @param array $array
 	 * @return array
 	 * @access public
@@ -471,6 +482,7 @@ class csstidy_optimise {
 	 * defined by 4.1.7 in REC-CSS2. This is a very rudimentary check
 	 * and should be replaced by a full-blown parsing algorithm or
 	 * regular expression
+	 *
 	 * @version 1.4
 	 */
 	function discard_invalid_selectors( &$array ) {
@@ -496,6 +508,7 @@ class csstidy_optimise {
 
 	/**
 	 * Dissolves properties like padding:10px 10px 10px to padding-top:10px;padding-bottom:10px;...
+	 *
 	 * @param string $property
 	 * @param string $value
 	 * @return array
@@ -541,6 +554,7 @@ class csstidy_optimise {
 
 	/**
 	 * Explodes a string as explode() does, however, not if $sep is escaped or within a string.
+	 *
 	 * @param string $sep seperator
 	 * @param string $string
 	 * @return array
@@ -584,6 +598,7 @@ class csstidy_optimise {
 
 	/**
 	 * Merges Shorthand properties again, the opposite of dissolve_4value_shorthands()
+	 *
 	 * @param array $array
 	 * @return array
 	 * @version 1.2
@@ -617,6 +632,7 @@ class csstidy_optimise {
 
 	/**
 	 * Dissolve background property
+	 *
 	 * @param string $str_value
 	 * @return array
 	 * @version 1.0
@@ -695,6 +711,7 @@ class csstidy_optimise {
 
 	/**
 	 * Merges all background properties
+	 *
 	 * @param array $input_css
 	 * @return array
 	 * @version 1.0
@@ -780,6 +797,7 @@ class csstidy_optimise {
 
 	/**
 	 * Dissolve font property
+	 *
 	 * @param string $str_value
 	 * @return array
 	 * @version 1.3
@@ -866,6 +884,7 @@ class csstidy_optimise {
 
 	/**
 	 * Merges all fonts properties
+	 *
 	 * @param array $input_css
 	 * @return array
 	 * @version 1.3

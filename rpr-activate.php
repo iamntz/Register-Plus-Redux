@@ -2,7 +2,7 @@
 if ( ! class_exists( 'RPR_Activate' ) ) {
 	class RPR_Activate {
 		public /*.void.*/ function __construct() {
-			//add_action( 'init', array( $this, 'rpr_activate_init' ), 10, 1 );
+			// add_action( 'init', array( $this, 'rpr_activate_init' ), 10, 1 );
 			add_filter( 'random_password', array( $this, 'rpr_activate_filter_random_password' ), 10, 1 ); // Replace random password with user set password
 			add_filter( 'wpmu_welcome_user_notification', array( $this, 'rpr_filter_wpmu_welcome_user_notification' ), 10, 3 );
 			add_filter( 'wpmu_welcome_notification', array( $this, 'rpr_filter_wpmu_welcome_notification' ), 10, 5 );
@@ -53,7 +53,7 @@ if ( ! class_exists( 'RPR_Activate' ) ) {
 			global $register_plus_redux;
 			global $wpdb;
 
-			//TODO: Not the most elegant solution, it would be better to interupt the activation and keep the data in the signups table with a flag to alert admin to complete activation
+			// TODO: Not the most elegant solution, it would be better to interupt the activation and keep the data in the signups table with a flag to alert admin to complete activation
 			if ( '1' === $register_plus_redux->rpr_get_option( 'verify_user_admin' ) ) {
 				update_user_meta( $user_id, 'stored_user_password', sanitize_text_field( $password ) );
 				$user = get_userdata( $user_id );
@@ -98,7 +98,8 @@ if ( ! class_exists( 'RPR_Activate' ) ) {
 			if ( '1' === $register_plus_redux->rpr_get_option( 'enable_invitation_code' ) && ! empty( $meta['invitation_code'] ) ) { update_user_meta( $user_id, 'invitation_code', sanitize_text_field( $meta['invitation_code'] ) );
 			}
 
-			/* filter_random_password replaces the random password with the password stored in meta
+			/*
+			 filter_random_password replaces the random password with the password stored in meta
 			if ( '1' === $register_plus_redux->rpr_get_option( 'user_set_password' ) && !empty( $meta['pass1'] ) ) {
 				$password = sanitize_text_field( $meta['pass1'] );
 				update_user_option( $user_id, 'default_password_nag', FALSE, TRUE );

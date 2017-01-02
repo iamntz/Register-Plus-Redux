@@ -656,7 +656,7 @@ if ( ! class_exists( 'RPR_Signup' ) ) {
 			global $pagenow;
 			if ( $pagenow != 'wp-signup.php' ) { return $result;
 			}
-			//trigger_error( sprintf( __( 'Register Plus Redux DEBUG: filter_wpmu_validate_user_signup($result=%s) from %s', 'register-plus-redux' ), print_r($result), $pagenow ) );
+			// trigger_error( sprintf( __( 'Register Plus Redux DEBUG: filter_wpmu_validate_user_signup($result=%s) from %s', 'register-plus-redux' ), print_r($result), $pagenow ) );
 			if ( '1' === $register_plus_redux->rpr_get_option( 'username_is_email' ) ) {
 				global $wpdb;
 
@@ -816,7 +816,7 @@ if ( ! class_exists( 'RPR_Signup' ) ) {
 			return $meta;
 		}
 
-		//TODO: Custom email verification messages here
+		// TODO: Custom email verification messages here
 		public /*.bool.*/ function filter_wpmu_signup_user_notification( /*.string.*/ $user, /*.string.*/ $user_email, /*.string.*/ $key, /*.array[string]string.*/ $meta ) {
 			global $register_plus_redux;
 			if ( '1' !== $register_plus_redux->rpr_get_option( 'verify_user_email' ) ) {
@@ -868,7 +868,7 @@ if ( ! class_exists( 'RPR_Signup' ) ) {
 			if ( 'wp-signup.php' === $pagenow && '1' === $register_plus_redux->rpr_get_option( 'user_set_password' ) ) {
 				if ( isset( $_POST['pass1'] ) ) {
 					$password = sanitize_text_field( (string) $_POST['pass1'] );
-					//unset( $_POST['pass1'] );
+					// unset( $_POST['pass1'] );
 				}
 			}
 			return $password;
@@ -879,7 +879,8 @@ if ( ! class_exists( 'RPR_Signup' ) ) {
 			switch ( $stage ) {
 				case 'user-signup' :
 					if ( $active_signup == 'all' || $_POST['signup_for'] == 'blog' && $active_signup == 'blog' || $_POST['signup_for'] == 'user' && $active_signup == 'user' ) {
-						/* begin validate_user_signup stage */
+						/*
+						 begin validate_user_signup stage */
 						// validate signup form, do wpmu_validate_user_signup action
 						$result = wpmu_validate_user_signup( isset( $_POST['user_name'] ) ? (string) $_POST['user_name'] : '', isset( $_POST['user_email'] ) ? (string) $_POST['user_email'] : '' );
 						extract( $result );
@@ -978,7 +979,7 @@ if ( ! class_exists( 'RPR_Signup' ) ) {
 				    echo '<p>' . $result->get_error_message() . '</p>';
 				}
 			} else {
-				//TODO: Why not reference $result->blog_id?
+				// TODO: Why not reference $result->blog_id?
 				extract( $result );
 				if ( isset( $blog_id ) ) { $url = get_blogaddress_by_id( (int) $blog_id );
 				}

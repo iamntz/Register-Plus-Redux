@@ -45,10 +45,9 @@ if ( ! class_exists( 'RPR_Admin_Menu' ) ) {
 			global $wpdb;
 			$hookname = add_menu_page( __( 'Register Plus Redux', 'register-plus-redux' ), __( 'Register Plus Redux', 'register-plus-redux' ), 'manage_options', 'register-plus-redux', array( $this, 'rpr_options_submenu' ) );
 			// NOTE: $hookname = toplevel_page_register-plus-redux
-
 			add_action( 'load-' . $hookname, array( $this, 'rpr_options_submenu_load' ), 10, 1 );
-			//add_action( 'admin_print_scripts-' . $hookname, array( $this, 'rpr_options_submenu_scripts' ), 10, 1 );
-			//add_action( 'admin_print_styles-' . $hookname, array( $this, 'rpr_options_submenu_styles' ), 10, 1 );
+			// add_action( 'admin_print_scripts-' . $hookname, array( $this, 'rpr_options_submenu_scripts' ), 10, 1 );
+			// add_action( 'admin_print_styles-' . $hookname, array( $this, 'rpr_options_submenu_styles' ), 10, 1 );
 			add_action( 'admin_footer-' . $hookname, array( $this, 'rpr_options_submenu_footer' ), 10, 1 );
 			if ( ! is_multisite() ) {
 				add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'rpr_filter_plugin_action_links' ), 10, 4 );
@@ -308,7 +307,7 @@ if ( ! class_exists( 'RPR_Admin_Menu' ) ) {
 									}
 									if ( $size > 5 ) {
 										echo '<div id="showHiddenInvitationCodes" style="cursor: pointer;">', sprintf( _n( 'Show %d hidden invitation code', 'Show %d hidden invitation codes', ( $size - 5 ), 'register-plus-redux' ), ( $size - 5 ) ), '</div>';
-										//echo '<div id="showHiddenInvitationCodes" style="cursor: pointer;">', sprintf( __( 'Show %d hidden invitation codes', 'register-plus-redux' ), ( $size - 5 ) ), '</div>';
+										// echo '<div id="showHiddenInvitationCodes" style="cursor: pointer;">', sprintf( __( 'Show %d hidden invitation codes', 'register-plus-redux' ), ( $size - 5 ) ), '</div>';
 									}
 								}
 								?>
@@ -1103,7 +1102,7 @@ if ( ! class_exists( 'RPR_Admin_Menu' ) ) {
 			}
 			if ( isset( $_GET['action'] ) && 'delete_user' === $_GET['action'] && isset( $_GET['user_id'] ) ) {
 				check_admin_referer( 'register-plus-redux-unverified-users' );
-				//necessary for wp_delete_user to function
+				// necessary for wp_delete_user to function
 				if ( ! function_exists( 'wp_delete_user' ) ) { require_once( ABSPATH . '/wp-admin/includes/user.php' );
 				}
 				if ( current_user_can( 'delete_user', (int) $_GET['user_id'] ) ) {
@@ -1115,7 +1114,7 @@ if ( ! class_exists( 'RPR_Admin_Menu' ) ) {
 			if ( ( isset( $_POST['action'] ) && 'delete_users' === $_POST['action'] ) || isset( $_POST['delete_users'] ) ) {
 				check_admin_referer( 'register-plus-redux-unverified-users' );
 				if ( isset( $_POST['users'] ) && is_array( $_POST['users'] ) && ! empty( $_POST['users'] ) ) {
-					//necessary for wp_delete_user to function
+					// necessary for wp_delete_user to function
 					if ( ! function_exists( 'wp_delete_user' ) ) { require_once( ABSPATH . '/wp-admin/includes/user.php' );
 					}
 					foreach ( (array) $_POST['users'] as $id ) {

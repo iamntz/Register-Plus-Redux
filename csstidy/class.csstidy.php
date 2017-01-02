@@ -59,13 +59,13 @@ require( 'class.csstidy_optimise.php' );
 
 /**
  * CSS Parser class
- *
 
  * This class represents a CSS parser which reads CSS code and saves it in an array.
  * In opposite to most other CSS parsers, it does not use regular expressions and
  * thus has full CSS2 support and a higher reliability.
  * Additional to that it applies some optimisations and fixes to the CSS code.
  * An online version should be available here: http://cdburnerxp.se/cssparse/css_optimiser.php
+ *
  * @package csstidy
  * @author Florian Schmitz (floele at gmail dot com) 2005-2006
  * @version 1.3.1
@@ -74,18 +74,21 @@ class csstidy {
 
 	/**
 	 * Saves the parsed CSS. This array is empty if preserve_css is on.
+	 *
 	 * @var array
 	 * @access public
 	 */
 	var $css = array();
 	/**
 	 * Saves the parsed CSS (raw)
+	 *
 	 * @var array
 	 * @access private
 	 */
 	var $tokens = array();
 	/**
 	 * Printer class
+	 *
 	 * @see csstidy_print
 	 * @var object
 	 * @access public
@@ -93,6 +96,7 @@ class csstidy {
 	var $print;
 	/**
 	 * Optimiser class
+	 *
 	 * @see csstidy_optimise
 	 * @var object
 	 * @access private
@@ -100,30 +104,35 @@ class csstidy {
 	var $optimise;
 	/**
 	 * Saves the CSS charset (@charset)
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $charset = '';
 	/**
 	 * Saves all @import URLs
+	 *
 	 * @var array
 	 * @access private
 	 */
 	var $import = array();
 	/**
 	 * Saves the namespace
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $namespace = '';
 	/**
 	 * Contains the version of csstidy
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $version = '1.3';
 	/**
 	 * Stores the settings
+	 *
 	 * @var array
 	 * @access private
 	 */
@@ -145,30 +154,35 @@ class csstidy {
 	var $status = 'is';
 	/**
 	 * Saves the current at rule (@media)
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $at = '';
 	/**
 	 * Saves the current selector
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $selector = '';
 	/**
 	 * Saves the current property
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $property = '';
 	/**
 	 * Saves the position of , in selectors
+	 *
 	 * @var array
 	 * @access private
 	 */
 	var $sel_separate = array();
 	/**
 	 * Saves the current value
+	 *
 	 * @var string
 	 * @access private
 	 */
@@ -180,12 +194,14 @@ class csstidy {
 	 * background:url(foo.png) red no-repeat;
 	 * "url(foo.png)", "red", and  "no-repeat" are subvalues,
 	 * seperated by whitespace
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $sub_value = '';
 	/**
 	 * Array which saves all subvalues for a property.
+	 *
 	 * @var array
 	 * @see sub_value
 	 * @access private
@@ -193,6 +209,7 @@ class csstidy {
 	var $sub_value_arr = array();
 	/**
 	 * Saves the stack of characters that opened the current strings
+	 *
 	 * @var array
 	 * @access private
 	 */
@@ -200,6 +217,7 @@ class csstidy {
 	var $cur_string = array();
 	/**
 	 * Status from which the parser switched to ic or instr
+	 *
 	 * @var array
 	 * @access private
 	 */
@@ -207,30 +225,35 @@ class csstidy {
 	/**
 	/**
 	 * =true if in invalid at-rule
+	 *
 	 * @var bool
 	 * @access private
 	 */
 	var $invalid_at = false;
 	/**
 	 * =true if something has been added to the current selector
+	 *
 	 * @var bool
 	 * @access private
 	 */
 	var $added = false;
 	/**
 	 * Array which saves the message log
+	 *
 	 * @var array
 	 * @access private
 	 */
 	var $log = array();
 	/**
 	 * Saves the line number
+	 *
 	 * @var integer
 	 * @access private
 	 */
 	var $line = 1;
 	/**
 	 * Marks if we need to leave quotes for a string
+	 *
 	 * @var array
 	 * @access private
 	 */
@@ -238,11 +261,13 @@ class csstidy {
 
 	/**
 	 * List of tokens
+	 *
 	 * @var string
 	 */
 	var $tokens_list = '';
 	/**
 	 * Loads standard template and sets default settings
+	 *
 	 * @access private
 	 * @version 1.3
 	 */
@@ -260,7 +285,8 @@ class csstidy {
 		$this->settings['remove_last_;'] = true;
 		/* rewrite all properties with low case, better for later gzip OK, safe*/
 		$this->settings['case_properties'] = 1;
-		/* sort properties in alpabetic order, better for later gzip
+		/*
+		 sort properties in alpabetic order, better for later gzip
 		 * but can cause trouble in case of overiding same propertie or using hack
 		 */
 		$this->settings['sort_properties'] = false;
@@ -287,6 +313,7 @@ class csstidy {
 
 	/**
 	 * Get the value of a setting.
+	 *
 	 * @param string $setting
 	 * @access public
 	 * @return mixed
@@ -301,6 +328,7 @@ class csstidy {
 
 	/**
 	 * Load a template
+	 *
 	 * @param string $template used by set_cfg to load a template via a configuration setting
 	 * @access private
 	 * @version 1.4
@@ -331,8 +359,9 @@ class csstidy {
 
 	/**
 	 * Set the value of a setting.
+	 *
 	 * @param string $setting
-	 * @param mixed $value
+	 * @param mixed  $value
 	 * @access public
 	 * @return bool
 	 * @version 1.0
@@ -358,9 +387,10 @@ class csstidy {
 
 	/**
 	 * Adds a token to $this->tokens
-	 * @param mixed $type
+	 *
+	 * @param mixed  $type
 	 * @param string $data
-	 * @param bool $do add a token even if preserve_css is off
+	 * @param bool   $do add a token even if preserve_css is off
 	 * @access private
 	 * @version 1.0
 	 */
@@ -372,8 +402,9 @@ class csstidy {
 
 	/**
 	 * Add a message to the message log
-	 * @param string $message
-	 * @param string $type
+	 *
+	 * @param string  $message
+	 * @param string  $type
 	 * @param integer $line
 	 * @access private
 	 * @version 1.0
@@ -391,7 +422,8 @@ class csstidy {
 
 	/**
 	 * Parse unicode notations and find a replacement character
-	 * @param string $string
+	 *
+	 * @param string  $string
 	 * @param integer $i
 	 * @access private
 	 * @return string
@@ -436,9 +468,10 @@ class csstidy {
 
 	/**
 	 * Write formatted output to a file
+	 *
 	 * @param string $filename
 	 * @param string $doctype when printing formatted, is a shorthand for the document type
-	 * @param bool $externalcss when printing formatted, indicates whether styles to be attached internally or as an external stylesheet
+	 * @param bool   $externalcss when printing formatted, indicates whether styles to be attached internally or as an external stylesheet
 	 * @param string $title when printing formatted, is the title to be added in the head of the document
 	 * @param string $lang when printing formatted, gives a two-letter language code to be added to the output
 	 * @access public
@@ -450,13 +483,14 @@ class csstidy {
 
 	/**
 	 * Write plain output to a file
+	 *
 	 * @param string $filename
-	 * @param bool $formatted whether to print formatted or not
+	 * @param bool   $formatted whether to print formatted or not
 	 * @param string $doctype when printing formatted, is a shorthand for the document type
-	 * @param bool $externalcss when printing formatted, indicates whether styles to be attached internally or as an external stylesheet
+	 * @param bool   $externalcss when printing formatted, indicates whether styles to be attached internally or as an external stylesheet
 	 * @param string $title when printing formatted, is the title to be added in the head of the document
 	 * @param string $lang when printing formatted, gives a two-letter language code to be added to the output
-	 * @param bool $pre_code whether to add pre and code tags around the code (for light HTML formatted templates)
+	 * @param bool   $pre_code whether to add pre and code tags around the code (for light HTML formatted templates)
 	 * @access public
 	 * @version 1.4
 	 */
@@ -483,8 +517,9 @@ class csstidy {
 
 	/**
 	 * Loads a new template
+	 *
 	 * @param string $content either filename (if $from_file == true), content of a template file, "high_compression", "highest_compression", "low_compression", or "default"
-	 * @param bool $from_file uses $content as filename if true
+	 * @param bool   $from_file uses $content as filename if true
 	 * @access public
 	 * @version 1.1
 	 * @see http://csstidy.sourceforge.net/templates.php
@@ -509,6 +544,7 @@ class csstidy {
 
 	/**
 	 * Starts parsing from URL
+	 *
 	 * @param string $url
 	 * @access public
 	 * @version 1.0
@@ -519,7 +555,8 @@ class csstidy {
 
 	/**
 	 * Checks if there is a token at the current position
-	 * @param string $string
+	 *
+	 * @param string  $string
 	 * @param integer $i
 	 * @access public
 	 * @version 1.11
@@ -530,6 +567,7 @@ class csstidy {
 
 	/**
 	 * Parses CSS in $string. The code is saved as array in $this->css
+	 *
 	 * @param string $string the CSS code
 	 * @access public
 	 * @return bool
@@ -542,8 +580,7 @@ class csstidy {
 
 		// PHP bug? Settings need to be refreshed in PHP4
 		$this->print = new csstidy_print( $this );
-		//$this->optimise = new csstidy_optimise($this);
-
+		// $this->optimise = new csstidy_optimise($this);
 		$all_properties = & $GLOBALS['csstidy']['all_properties'];
 		$at_rules = & $GLOBALS['csstidy']['at_rules'];
 		$quoted_string_properties = & $GLOBALS['csstidy']['quoted_string_properties'];
@@ -788,7 +825,7 @@ class csstidy {
 
 							$this->value = array_shift( $this->sub_value_arr );
 							while ( count( $this->sub_value_arr ) ) {
-								//$this->value .= (substr($this->value,-1,1)==','?'':' ').array_shift($this->sub_value_arr);
+								// $this->value .= (substr($this->value,-1,1)==','?'':' ').array_shift($this->sub_value_arr);
 								$this->value .= ' ' . array_shift( $this->sub_value_arr );
 							}
 
@@ -932,6 +969,7 @@ class csstidy {
 
 	/**
 	 * Explodes selectors
+	 *
 	 * @access private
 	 * @version 1.0
 	 */
@@ -964,7 +1002,8 @@ class csstidy {
 
 	/**
 	 * Checks if a character is escaped (and returns true if it is)
-	 * @param string $string
+	 *
+	 * @param string  $string
 	 * @param integer $pos
 	 * @access public
 	 * @return bool
@@ -976,6 +1015,7 @@ class csstidy {
 
 	/**
 	 * Adds a property with value to the existing CSS code
+	 *
 	 * @param string $media
 	 * @param string $selector
 	 * @param string $property
@@ -1096,9 +1136,10 @@ class csstidy {
 
 	/**
 	 * Adds CSS to an existing media/selector
+	 *
 	 * @param string $media
 	 * @param string $selector
-	 * @param array $css_add
+	 * @param array  $css_add
 	 * @access private
 	 * @version 1.1
 	 */
@@ -1110,6 +1151,7 @@ class csstidy {
 
 	/**
 	 * Checks if $value is !important.
+	 *
 	 * @param string $value
 	 * @return bool
 	 * @access public
@@ -1121,6 +1163,7 @@ class csstidy {
 
 	/**
 	 * Returns a value without !important
+	 *
 	 * @param string $value
 	 * @return string
 	 * @access public
@@ -1140,7 +1183,8 @@ class csstidy {
 
 	/**
 	 * Checks if the next word in a string from pos is a CSS property
-	 * @param string $istring
+	 *
+	 * @param string  $istring
 	 * @param integer $pos
 	 * @return bool
 	 * @access private
@@ -1163,6 +1207,7 @@ class csstidy {
 
 	/**
 	 * Checks if a property is valid
+	 *
 	 * @param string $property
 	 * @return bool;
 	 * @access public

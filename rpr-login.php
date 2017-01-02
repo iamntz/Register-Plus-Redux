@@ -607,7 +607,7 @@ if ( ! class_exists( 'RPR_Login' ) ) {
 			global $pagenow;
 			if ( 'wp-login.php' !== $pagenow ) { return;            }
 
-			//$source = stripslashes_deep( $_POST );
+			// $source = stripslashes_deep( $_POST );
 			$source = (array) $_POST;
 
 			if ( is_array( $register_plus_redux->rpr_get_option( 'show_fields' ) ) && in_array( 'first_name', $register_plus_redux->rpr_get_option( 'show_fields' ) ) && ! empty( $source['first_name'] ) ) { update_user_meta( $user_id, 'first_name', sanitize_text_field( (string) $source['first_name'] ) );            }
@@ -664,7 +664,7 @@ if ( ! class_exists( 'RPR_Login' ) ) {
 
 		public /*.string.*/ function rpr_filter_registration_redirect( /*.string.*/ $redirect_to ) {
 			global $register_plus_redux;
-			//NOTE: default $redirect_to = 'wp-login.php?checkemail=registered'
+			// NOTE: default $redirect_to = 'wp-login.php?checkemail=registered'
 			if ( '1' === $register_plus_redux->rpr_get_option( 'autologin_user' ) && '1' !== $register_plus_redux->rpr_get_option( 'verify_user_email' ) && '1' !== $register_plus_redux->rpr_get_option( 'verify_user_admin' ) ) { $redirect_to = admin_url(); }
 			if ( $register_plus_redux->rpr_get_option( 'registration_redirect_url' ) ) { $redirect_to = esc_url( $register_plus_redux->rpr_get_option( 'registration_redirect_url' ) ); }
 			return $redirect_to;
@@ -856,7 +856,7 @@ if ( ! class_exists( 'RPR_Login' ) ) {
 					}
 				}
 
-				//TODO: this may not be the best option to tie this behavior to
+				// TODO: this may not be the best option to tie this behavior to
 				if ( '1' === $register_plus_redux->rpr_get_option( 'default_css' ) ) {
 					?>
 					<script type="text/javascript">

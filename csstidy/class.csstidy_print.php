@@ -43,18 +43,21 @@ class csstidy_print {
 
 	/**
 	 * Saves the input CSS string
+	 *
 	 * @var string
 	 * @access private
 	 */
 	var $input_css = '';
 	/**
 	 * Saves the formatted CSS string
+	 *
 	 * @var string
 	 * @access public
 	 */
 	var $output_css = '';
 	/**
 	 * Saves the formatted CSS string (plain text)
+	 *
 	 * @var string
 	 * @access public
 	 */
@@ -62,6 +65,7 @@ class csstidy_print {
 
 	/**
 	 * Constructor
+	 *
 	 * @param array $css contains the class csstidy
 	 * @access private
 	 * @version 1.0
@@ -78,6 +82,7 @@ class csstidy_print {
 
 	/**
 	 * Resets output_css and output_css_plain (new css code)
+	 *
 	 * @access private
 	 * @version 1.0
 	 */
@@ -88,6 +93,7 @@ class csstidy_print {
 
 	/**
 	 * Returns the CSS code as plain text
+	 *
 	 * @param string $default_media default @media to add to selectors without any @media
 	 * @return string
 	 * @access public
@@ -100,6 +106,7 @@ class csstidy_print {
 
 	/**
 	 * Returns the formatted CSS code
+	 *
 	 * @param string $default_media default @media to add to selectors without any @media
 	 * @return string
 	 * @access public
@@ -112,8 +119,9 @@ class csstidy_print {
 
 	/**
 	 * Returns the formatted CSS code to make a complete webpage
+	 *
 	 * @param string $doctype shorthand for the document type
-	 * @param bool $externalcss indicates whether styles to be attached internally or as an external stylesheet
+	 * @param bool   $externalcss indicates whether styles to be attached internally or as an external stylesheet
 	 * @param string $title title to be added in the head of the document
 	 * @param string $lang two-letter language code to be added to the output
 	 * @return string
@@ -147,7 +155,7 @@ class csstidy_print {
 			$output .= "\n</style>";
 		} else {
 			$output .= "\n" . '    <link rel="stylesheet" type="text/css" href="cssparsed.css" />';
-			//          }
+			// }
 		}
 		$output .= "\n</head>\n<body><code id=\"copytext\">";
 		$output .= $this->formatted();
@@ -157,7 +165,8 @@ class csstidy_print {
 
 	/**
 	 * Returns the formatted CSS Code and saves it into $this->output_css and $this->output_css_plain
-	 * @param bool $plain plain text or not
+	 *
+	 * @param bool   $plain plain text or not
 	 * @param string $default_media default @media to add to selectors without any @media
 	 * @access private
 	 * @version 2.0
@@ -276,6 +285,7 @@ class csstidy_print {
 
 	/**
 	 * Gets the next token type which is $move away from $key, excluding comments
+	 *
 	 * @param integer $key current position
 	 * @param integer $move move this far
 	 * @return mixed a token type
@@ -298,6 +308,7 @@ class csstidy_print {
 
 	/**
 	 * Converts $this->css array to a raw array ($this->tokens)
+	 *
 	 * @param string $default_media default @media to add to selectors without any @media
 	 * @access private
 	 * @version 1.0
@@ -339,8 +350,9 @@ class csstidy_print {
 
 	/**
 	 * Same as htmlspecialchars, only that chars are not replaced if $plain !== true. This makes  print_code() cleaner.
+	 *
 	 * @param string $string
-	 * @param bool $plain
+	 * @param bool   $plain
 	 * @return string
 	 * @see csstidy_print::_print()
 	 * @access private
@@ -355,6 +367,7 @@ class csstidy_print {
 
 	/**
 	 * Get compression ratio
+	 *
 	 * @access public
 	 * @return float
 	 * @version 1.2
@@ -368,6 +381,7 @@ class csstidy_print {
 
 	/**
 	 * Get difference between the old and new code in bytes and prints the code if necessary.
+	 *
 	 * @access public
 	 * @return string
 	 * @version 1.1
@@ -390,6 +404,7 @@ class csstidy_print {
 
 	/**
 	 * Get the size of either input or output CSS in KB
+	 *
 	 * @param string $loc default is "output"
 	 * @access public
 	 * @return integer

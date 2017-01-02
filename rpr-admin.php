@@ -10,7 +10,6 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 			global $register_plus_redux;
 			// TODO: Write function to migrate register plus settings to redux
 			// should not be in init, likely to use similar code to rename
-
 			if ( ! current_user_can( 'manage_options' ) ) { return;
 			}
 
@@ -51,8 +50,8 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 			// TODO: This may need some work, not sure isset will fire the way I think it does
 			if ( false === $invitation_code_bank && isset( $nested_invitation_code_bank ) ) {
 				update_option( 'register_plus_redux_invitation_code_bank-rv1', $nested_invitation_code_bank );
-				//TODO: Confirm old invitation codes are migrating successfully, then kill old option
-				//$register_plus_redux->rpr_unset_option( 'invitation_code_bank' );
+				// TODO: Confirm old invitation codes are migrating successfully, then kill old option
+				// $register_plus_redux->rpr_unset_option( 'invitation_code_bank' );
 			}
 
 			// Added 03/02/13 in 3.9.6 converting 'unverified_*' users to "Unverified" users
@@ -103,7 +102,7 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 						$redux_usermeta[] = $meta_field;
 					}
 					// TODO: Confirm old custom fields are migrating successfully, then kill old option
-					//delete_option( 'register_plus_redux_usermeta-rv1' );
+					// delete_option( 'register_plus_redux_usermeta-rv1' );
 					if ( ! empty( $redux_usermeta ) ) { update_option( 'register_plus_redux_usermeta-rv2', $redux_usermeta );
 					}
 				} elseif ( is_array( $custom_fields ) ) {
@@ -131,7 +130,7 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 						$redux_usermeta[] = $meta_field;
 					}
 					// TODO: Confirm old custom fields are migrating successfully, then kill old option
-					//delete_option( 'register_plus_redux_custom_fields' );
+					// delete_option( 'register_plus_redux_custom_fields' );
 					if ( ! empty( $redux_usermeta ) ) { update_option( 'register_plus_redux_usermeta-rv2', $redux_usermeta );
 					}
 				}// End if().
@@ -148,7 +147,7 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 				/*.object.*/ $user_query = new WP_User_Query( array( 'role' => 'rpr_unverified' ) );
 				if ( ! empty( $user_query->results ) ) {
 					$expirationtimestamp = strtotime( '-' . absint( $register_plus_redux->rpr_get_option( 'delete_unverified_users_after' ) ) . ' days' );
-					//NOTE: necessary for wp_delete_user
+					// NOTE: necessary for wp_delete_user
 					if ( ! function_exists( 'wp_delete_user' ) ) { require_once( ABSPATH . '/wp-admin/includes/user.php' );
 					}
 					foreach ( $user_query->results as $user ) {

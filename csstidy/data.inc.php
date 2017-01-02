@@ -636,17 +636,17 @@ $GLOBALS['csstidy']['multiple_properties'] = array_merge( $GLOBALS['csstidy']['u
  * @version 1.0
  * @see csstidy::load_template()
  */
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="at">'; //string before @rule
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span> <span class="format">{</span>' . "\n"; //bracket after @-rule
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="selector">'; //string before selector
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span> <span class="format">{</span>' . "\n"; //bracket after selector
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="property">'; //string before property
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span><span class="value">'; //string after property+before value
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span><span class="format">;</span>' . "\n"; //string after value
-$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="format">}</span>'; //closing bracket - selector
-$GLOBALS['csstidy']['predefined_templates']['default'][] = "\n\n"; //space between blocks {...}
-$GLOBALS['csstidy']['predefined_templates']['default'][] = "\n" . '<span class="format">}</span>' . "\n\n"; //closing bracket @-rule
-$GLOBALS['csstidy']['predefined_templates']['default'][] = ''; //indent in @-rule
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="at">'; // string before @rule
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span> <span class="format">{</span>' . "\n"; // bracket after @-rule
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="selector">'; // string before selector
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span> <span class="format">{</span>' . "\n"; // bracket after selector
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="property">'; // string before property
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span><span class="value">'; // string after property+before value
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '</span><span class="format">;</span>' . "\n"; // string after value
+$GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="format">}</span>'; // closing bracket - selector
+$GLOBALS['csstidy']['predefined_templates']['default'][] = "\n\n"; // space between blocks {...}
+$GLOBALS['csstidy']['predefined_templates']['default'][] = "\n" . '<span class="format">}</span>' . "\n\n"; // closing bracket @-rule
+$GLOBALS['csstidy']['predefined_templates']['default'][] = ''; // indent in @-rule
 $GLOBALS['csstidy']['predefined_templates']['default'][] = '<span class="comment">'; // before comment
 $GLOBALS['csstidy']['predefined_templates']['default'][] = '</span>' . "\n"; // after comment
 $GLOBALS['csstidy']['predefined_templates']['default'][] = "\n"; // after last line @-rule
