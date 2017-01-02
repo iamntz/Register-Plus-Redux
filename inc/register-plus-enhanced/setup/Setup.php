@@ -34,7 +34,6 @@ class Setup {
 	 */
 	public static function activation() {
 		global $wp_roles;
-    die();
 		add_role( 'rpr_unverified', 'Unverified' );
 		update_option( 'register_plus_redux_last_activated', RPR_ACTIVATION_REQUIRED );
 		add_option( 'rg_rpr_plugin_do_activation_redirect', true );
