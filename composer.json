@@ -1,0 +1,21 @@
+{
+    "name": "iamntz/register-plus-redux",
+    "description": "Enhances the user registration process with complete customization and additional administration options.",
+    "type": "wp-plugin",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Ionut Staicu",
+            "email": "github@iamntz.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "rpe\\": "inc/register-plus-enhanced"
+      },
+
+      "files" : []
+    }
+}
