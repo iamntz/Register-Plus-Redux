@@ -6,12 +6,12 @@ $GLOBALS['csstidy']['all_properties']['text-size-adjust'] = 'CSS3.0';
 
 // Support browser prefixes for properties only in the latest CSS draft
 foreach ( $GLOBALS['csstidy']['all_properties'] as $property => $levels ) {
-	if ( strpos( $levels, "," ) === false ) {
-		$GLOBALS['csstidy']['all_properties']['-moz-' . $property] = $levels;
-		$GLOBALS['csstidy']['all_properties']['-webkit-' . $property] = $levels;
-		$GLOBALS['csstidy']['all_properties']['-ms-' . $property] = $levels;
-		$GLOBALS['csstidy']['all_properties']['-o-' . $property] = $levels;
-		$GLOBALS['csstidy']['all_properties']['-khtml-' . $property] = $levels;
+	if ( strpos( $levels, ',' ) === false ) {
+		$GLOBALS['csstidy']['all_properties'][ '-moz-' . $property ] = $levels;
+		$GLOBALS['csstidy']['all_properties'][ '-webkit-' . $property ] = $levels;
+		$GLOBALS['csstidy']['all_properties'][ '-ms-' . $property ] = $levels;
+		$GLOBALS['csstidy']['all_properties'][ '-o-' . $property ] = $levels;
+		$GLOBALS['csstidy']['all_properties'][ '-khtml-' . $property ] = $levels;
 
 		if ( in_array( $property, $GLOBALS['csstidy']['unit_values'] ) ) {
 			$GLOBALS['csstidy']['unit_values'][] = '-moz-' . $property;
