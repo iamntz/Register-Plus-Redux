@@ -1,7 +1,8 @@
 <?php
 if ( ! class_exists( 'RPR_Admin' ) ) {
 	class RPR_Admin {
-		public /*.void.*/ function __construct() {
+		public /*.void.*/ function __construct( $setup ) {
+			$this->setup = $setup;
 			add_action( 'admin_init', array( $this, 'rpr_admin_init' ), 10, 1 ); // Runs after WordPress has finished loading but before any headers are sent.
 			add_action( 'admin_init', array( $this, 'rpr_delete_unverified_users' ), 10, 1 ); // Runs after WordPress has finished loading but before any headers are sent.
 		}
@@ -14,7 +15,7 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 			}
 
 			if ( RPR_ACTIVATION_REQUIRED !== get_option( 'register_plus_redux_last_activated' ) ) {
-				$register_plus_redux->rpr_activation();
+				$this->setup->activation();
 			}
 
 			$updated = false;
@@ -172,7 +173,3 @@ if ( ! class_exists( 'RPR_Admin' ) ) {
 		}
 	}
 }// End if().
-
-if ( class_exists( 'RPR_Admin' ) ) { $rpr_admin = new RPR_Admin();
-}
-
