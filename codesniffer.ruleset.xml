@@ -5,7 +5,10 @@
 
     <description>A custom set of code standard rules for the Register Plus Redux plugin.</description>
 
-    <rule ref="WordPress-Core"/>
+    <rule ref="WordPress-Core">
+      <exclude name="Generic.Files.LowercasedFilename" />
+      <exclude name="WordPress.Files.FileName" />
+    </rule>
     <rule ref="WordPress-Docs"/>
     <rule ref="WordPress-Extra"/>
 
